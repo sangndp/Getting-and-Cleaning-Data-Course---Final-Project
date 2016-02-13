@@ -50,6 +50,6 @@ names(data) <- gsub("Gyro", "Gyroscope", names(data))
 
 # Q5: creates a second, independent tidy data set with the average of each variable for each activity and each subject #
 tidy_data <- aggregate(data, by = list(data$subject, data$activity), FUN = mean) # group data and average of each variable for each activity and each subject
-tidy_data <- tidy_data[order(tidy_data$subject, tidy_data$activity), ] # order data by subject andactivity
+tidy_data <- tidy_data[order(tidy_data$subject, tidy_data$activity), -c(1,2) ] # order data by subject andactivity
 str(tidy_data) # check data set
 write.table(tidy_data, file = "tidydata.txt",row.name=FALSE) # creates a second, independent tidy data set
